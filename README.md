@@ -71,3 +71,17 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
 * <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
 * <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+
+##### Optimization Actions for Part 1: index.html
+* Removed web fonts
+* Optimized images
+* Removed render-blocking style.css to style tag in html
+* Added print media tag to print.css
+* Added async to js files and moved google analytics to bottom to prevent render-blocking
+
+##### Optimization Actions for Part 2: pizza.html
+* Reduced number of columns of scrolling pizzas to 4 from 8 to reduce number of visible pizzas
+* Reduced number of pizzas to 24 from 200
+* Changed querySelectorAll to getElementsByClassName for faster DOM access
+* Created items array for randomPizzaContainer class
+* Replaced style.left translation with style.transform in updatePosition to prevent re-layout
