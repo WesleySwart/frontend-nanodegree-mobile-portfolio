@@ -78,6 +78,7 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * Removed render-blocking style.css to style tag in html
 * Added print media tag to print.css
 * Added async to js files and moved google analytics to bottom to prevent render-blocking
+* Minified js and css files
 
 ##### Optimization Actions for Part 2: pizza.html
 * Reduced number of columns of scrolling pizzas to 4 from 8 to reduce number of visible pizzas
@@ -85,3 +86,4 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * Changed querySelectorAll to getElementsByClassName for faster DOM access
 * Created items array for randomPizzaContainer class
 * Replaced style.left translation with style.transform in updatePosition to prevent re-layout
+* Minified js and css files
