@@ -72,6 +72,15 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
 * <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
 
+##### Grunt Tasks
+* The node_modules folder has been ignored from the repo that contains the Grunt packages
+* To run the Grunt tasks, you will need to have nodejs installed. You can get it <a href"https://nodejs.org/en/">here.</a>
+* To verify the installation, you can run <code>node -v</code> and <code>npm -v</code> from the command line.
+* The package.json file is already created with the following modules: jshint, uglify, watch, and cssmin. Navigate to the project folder in the command line and run <code>npm install</code> to install the packages.
+* To run the Grunt packages: <code>grunt package_name</code>, where package_name is the name of the package.
+* Running <code>grunt</code> will execute the default task jshint, uglify, and cssmin
+* For more information on Grunt, you can view the getting started guide <a href="http://gruntjs.com/getting-started">here.</a>
+
 ##### Optimization Actions for Part 1: index.html
 * Removed web fonts
 * Optimized images
