@@ -90,9 +90,9 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * Minified js and css files
 
 ##### Optimization Actions for Part 2: pizza.html
-* Reduced number of columns of scrolling pizzas to 4 from 8 to reduce number of visible pizzas
-* Reduced number of pizzas to 24 from 200
-* Changed querySelectorAll to getElementsByClassName for faster DOM access
+* Reduced number of pizzas to 48 from 200
+* Changed querySelectorAll to getElementsByClassName and querySelector to getElementById for faster DOM access
 * Created items array for randomPizzaContainer class
+* Moved size recalculations outside for loop and adjusted the calculations to use just one element rather then looping through the entire array since the elements are all the same size
 * Replaced style.left translation with style.transform in updatePosition to prevent re-layout
 * Minified js and css files

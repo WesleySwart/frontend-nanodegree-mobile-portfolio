@@ -424,7 +424,8 @@ var resizePizzas = function(size) {
   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldwidth = elem.offsetWidth;
-    var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
+    //Changed .querySelector to .getElementById
+    var windowwidth = document.getElementById("randomPizzas").offsetWidth;
     var oldsize = oldwidth / windowwidth;
 
     // TODO: change to 3 sizes? no more xl?
@@ -450,13 +451,15 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    //Changed querySelectorAll to getElementsByClassName
+    //Changed .querySelectorAll to .getElementsByClassName
     //Added items array for all randomPizzaContainers
     var items = document.getElementsByClassName("randomPizzaContainer");
+    //Move dx and newWidth outside for loop
+    //Use only one element (the first item in the array) to do the calculations because they are all the same size
+    var dx = determineDx(items[0], size);
+    var newwidth = (items[0].offsetWidth + dx) + 'px';
+
     for (var i = 0; i < items.length; i++) {
-      var dx = determineDx(items[i], size);
-      var newwidth = (items[i].offsetWidth + dx) + 'px';
-      //console.log(dx,newwidth);
       items[i].style.width = newwidth;
     }
   }
@@ -534,10 +537,10 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 4; //reduced columns to 4 from 8 to reduce number of visible pizzas
+  var cols = 8;
   var s = 256;
-  //Reduce number of pizzas from 200 to 24
-  for (var i = 0; i < 24; i++) {
+  //Reduce number of pizzas from 200 to 48
+  for (var i = 0; i < 48; i++) { //Change 48 to n for dynamic
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -545,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
