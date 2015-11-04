@@ -506,7 +506,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-function updatePositions() {
+function updatePositions(mq) {
   frame++;
   window.performance.mark("mark_start_frame");
   // Changed querySelectorAll to getElementsByClassName,
@@ -514,10 +514,11 @@ function updatePositions() {
   // created transfomrX variable to hold calulated transform x value,
   // and replaced style.left with transform to prevent re-layout
   var items = document.getElementsByClassName("mover");
-  var phase = Math.sin((document.body.scrollTop / 1250));
+  var phase = Math.sin((document.body.scrollTop / 1250)); //+ (items.length % 5);
 
   for (var i = 0; i < items.length; i++) {
-    var transformX = items[i].basicLeft + 100 * phase + 'px';
+    //Pizzas are shifted 256px to the left of viewport so that they cover entire width of background for larger screen sizes
+    var transformX = (items[i].basicLeft + 100 * phase) - 256 + 'px';
     //console.log(phase, document.body.scrollTop/1250);
     items[i].style.transform = 'translate3d(' + transformX + ',0,0)';
   }
@@ -539,14 +540,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+
   //Reduce number of pizzas from 200 to 48
-  for (var i = 0; i < 48; i++) { //Change 48 to n for dynamic
+  for (var i = 0; i < 48; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
+    //console.log("basic left_" + i + ": " + elem.basicLeft);
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.getElementById("movingPizzas1").appendChild(elem);
   }

@@ -93,6 +93,8 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * Reduced number of pizzas to 48 from 200
 * Changed querySelectorAll to getElementsByClassName and querySelector to getElementById for faster DOM access
 * Created items array for randomPizzaContainer class
-* Moved size recalculations outside for loop and adjusted the calculations to use just one element rather then looping through the entire array since the elements are all the same size
+* Moved pizza size recalculations outside for loop and adjusted the calculations to use just one element rather then looping through the entire array of pizzas since the elements are all the same size
 * Replaced style.left translation with style.transform in updatePosition to prevent re-layout
+* Added fixed position for #movingPizzas1 container (div for movable pizza background images) in style.css because a bootstrap media query breakpoint was changing its position preventing pizzas from showing across the width of the screen
+* Adjusted position of movable pizzas 256px to the left to accomodate larger screens
 * Minified js and css files
