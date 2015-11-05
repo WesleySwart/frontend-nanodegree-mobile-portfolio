@@ -90,11 +90,11 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * Minified js and css files
 
 ##### Optimization Actions for Part 2: pizza.html
-* Reduced number of pizzas to 48 from 200
+* Reduced number of pizzas from 200. Dynamically generate pizzas as a function of inner viewport height.
 * Changed querySelectorAll to getElementsByClassName and querySelector to getElementById for faster DOM access
 * Created items array for randomPizzaContainer class
 * Moved pizza size recalculations outside for loop and adjusted the calculations to use just one element rather then looping through the entire array of pizzas since the elements are all the same size
+* Moved phase calculations outside loop and created an array to hold phase values used in transform calculation
 * Replaced style.left translation with style.transform in updatePosition to prevent re-layout
 * Added fixed position for #movingPizzas1 container (div for movable pizza background images) in style.css because a bootstrap media query breakpoint was changing its position preventing pizzas from showing across the width of the screen
-* Adjusted position of movable pizzas 256px to the left to accomodate larger screens
 * Minified js and css files
