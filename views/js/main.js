@@ -16,6 +16,9 @@ Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
 
+//Set timer var to empty so it resets on page load
+var resizeTimer;
+
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
@@ -552,14 +555,16 @@ function updatePositions() {
   }
 }
 
+// Creates sliding pizzas
+// Number of rows is a function of inner height
+// Dynamically create number of pizzas p based on rows and columns, reduced from 200
 function createMovablePizzas(){
   var cols = 8;
   var s = 256;
   var rows = window.innerHeight/s;
   p = parseInt(rows * cols);
-  console.log(p);
-  //Reduce number of pizzas from 200
-  //Dynamically generate number of pizzas based on inner viewport height
+  //console.log(p);
+
   for (var i = 0; i < p; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
@@ -574,40 +579,25 @@ function createMovablePizzas(){
   updatePositions();
 }
 
-// runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
-
-// Recalculate number of pizzas on resize
-// Needs optimization
-window.addEventListener('resize', function(){
+//Remove mover pizzas on resize before repainting to prevent from creating dupicates
+function resizeFunction(){
   var elem = document.getElementsByClassName("mover");
   while(elem[0]){
     elem[0].parentNode.removeChild(elem[0]);
   }
   createMovablePizzas();
+}
+
+// runs updatePositions on scroll
+window.addEventListener('scroll', updatePositions);
+
+// Recalculate number of pizzas on resize
+// Throttled to run every 250 ms for performance
+window.addEventListener('resize', function(){
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(resizeFunction, 250);
 });
 
 // Generates the sliding pizzas when the page loads.
-/*document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
-  var s = 256;
-  var rows = window.innerHeight/s;
-  p = parseInt(rows * cols);
-  console.log(p);
-  //Reduce number of pizzas from 200
-  //Dynamically generate number of pizzas based on inner viewport height
-  for (var i = 0; i < p; i++) {
-    var elem = document.createElement('img');
-    elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
-    //console.log("basic left_" + i + ": " + elem.basicLeft);
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.getElementById("movingPizzas1").appendChild(elem);
-  }
-  updatePositions();
-});*/
-
+// Moved to callable function, so we call it on resize
 document.addEventListener('DOMContentLoaded', createMovablePizzas);

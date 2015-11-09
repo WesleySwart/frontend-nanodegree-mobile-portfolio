@@ -97,4 +97,7 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 * Moved phase calculations outside loop and created an array to hold phase values used in transform calculation
 * Replaced style.left translation with style.transform in updatePosition to prevent re-layout
 * Added fixed position for #movingPizzas1 container (div for movable pizza background images) in style.css because a bootstrap media query breakpoint was changing its position preventing pizzas from showing across the width of the screen
+* Moved sliding pizza creation to callable function
+* Dynamically create number of sliding pizzas as a function of inner height
+* Added event listener to recalculate number of pizzas on resize, throttled at 250 ms for performance
 * Minified js and css files
