@@ -558,7 +558,7 @@ function updatePositions() {
 // Creates sliding pizzas
 // Number of rows is a function of inner height
 // Dynamically create number of pizzas p based on rows and columns, reduced from 200
-function createMovablePizzas(){
+function createSlidingPizzas(){
   var cols = 8;
   var s = 256;
   var rows = window.innerHeight/s;
@@ -585,7 +585,7 @@ function resizeFunction(){
   while(elem[0]){
     elem[0].parentNode.removeChild(elem[0]);
   }
-  createMovablePizzas();
+  createSlidingPizzas();
 }
 
 // runs updatePositions on scroll
@@ -600,4 +600,4 @@ window.addEventListener('resize', function(){
 
 // Generates the sliding pizzas when the page loads.
 // Moved to callable function, so we call it on resize
-document.addEventListener('DOMContentLoaded', createMovablePizzas);
+document.addEventListener('DOMContentLoaded', createSlidingPizzas);
